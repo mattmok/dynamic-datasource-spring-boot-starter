@@ -45,6 +45,7 @@ dynamic-datasource-spring-boot-starter 是一个基于springboot的快速集成�
 
 详细文档 https://www.kancloud.cn/tracy5546/dynamic-datasource/2264611
 
+
 # 特性
 
 - 支持 **数据源分组** ，适用于多种场景 纯粹多库 读写分离 一主多从 混合模式。
