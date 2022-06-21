@@ -16,8 +16,13 @@
 package com.baomidou.dynamic.datasource.spring.boot.autoconfigure;
 
 import cn.beecp.BeeDataSource;
-import com.alibaba.druid.pool.DruidDataSource;
-import com.baomidou.dynamic.datasource.creator.*;
+import com.baomidou.dynamic.datasource.creator.BasicDataSourceCreator;
+import com.baomidou.dynamic.datasource.creator.BeeCpDataSourceCreator;
+import com.baomidou.dynamic.datasource.creator.DataSourceCreator;
+import com.baomidou.dynamic.datasource.creator.Dbcp2DataSourceCreator;
+import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
+import com.baomidou.dynamic.datasource.creator.HikariDataSourceCreator;
+import com.baomidou.dynamic.datasource.creator.JndiDataSourceCreator;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -61,20 +66,6 @@ public class DynamicDataSourceCreatorAutoConfiguration {
     @Order(JNDI_ORDER)
     public JndiDataSourceCreator jndiDataSourceCreator() {
         return new JndiDataSourceCreator();
-    }
-
-    /**
-     * 存在Druid数据源时, 加入创建器
-     */
-    @ConditionalOnClass(DruidDataSource.class)
-    @Configuration
-    static class DruidDataSourceCreatorConfiguration {
-
-        @Bean
-        @Order(DRUID_ORDER)
-        public DruidDataSourceCreator druidDataSourceCreator() {
-            return new DruidDataSourceCreator();
-        }
     }
 
     /**
